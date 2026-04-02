@@ -6,6 +6,7 @@ import { AppLayout } from '@/components/layout/AppLayout'
 import { AuthLayout } from '@/components/layout/AuthLayout'
 import { PWAInstallPrompt } from '@/components/PWAInstallPrompt'
 import { ThemeColorMeta } from '@/components/ThemeColorMeta'
+import { SafeAreaDebug } from '@/components/SafeAreaDebug'
 
 // Lazy load pages for better performance
 const LoginPage = lazy(() => import('@/pages/LoginPage').then(m => ({ default: m.LoginPage })))
@@ -54,6 +55,7 @@ export default function App() {
       </Suspense>
       <Toaster position="top-right" />
       <PWAInstallPrompt />
+      <SafeAreaDebug />
     </ThemeProvider>
   )
 }

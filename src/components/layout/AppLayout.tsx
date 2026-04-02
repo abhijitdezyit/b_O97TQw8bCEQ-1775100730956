@@ -31,17 +31,24 @@ export function AppLayout() {
       </div>
 
       {/* Mobile Layout */}
-      <div className="lg:hidden flex flex-col bg-background" style={{ height: '100dvh' }}>
+      <div 
+        className="lg:hidden flex flex-col bg-background" 
+        style={{ 
+          height: '100dvh',
+          maxHeight: '-webkit-fill-available'
+        }}
+      >
         {/* Header with safe area */}
         <Header />
         
         {/* Scrollable Content */}
         <main 
-          className="flex-1 overflow-y-auto p-4 bg-background"
+          className="flex-1 overflow-y-auto bg-background"
           style={{ 
-            paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))',
-            paddingLeft: 'calc(1rem + env(safe-area-inset-left))',
-            paddingRight: 'calc(1rem + env(safe-area-inset-right))'
+            paddingTop: '1rem',
+            paddingBottom: 'max(5rem, calc(4rem + var(--sab, env(safe-area-inset-bottom, 0px))))',
+            paddingLeft: 'max(1rem, var(--sal, env(safe-area-inset-left, 0px)))',
+            paddingRight: 'max(1rem, var(--sar, env(safe-area-inset-right, 0px)))'
           }}
         >
           <Outlet />

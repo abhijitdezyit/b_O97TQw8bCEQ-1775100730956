@@ -34,9 +34,9 @@ export function MobileNav({ className }: MobileNavProps) {
         className
       )}
       style={{
-        paddingBottom: 'env(safe-area-inset-bottom)',
-        paddingLeft: 'env(safe-area-inset-left)',
-        paddingRight: 'env(safe-area-inset-right)'
+        paddingBottom: 'max(0px, var(--sab, env(safe-area-inset-bottom, 0px)))',
+        paddingLeft: 'max(0px, var(--sal, env(safe-area-inset-left, 0px)))',
+        paddingRight: 'max(0px, var(--sar, env(safe-area-inset-right, 0px)))'
       }}
     >
       <div className="flex items-center justify-around h-16 px-2">
