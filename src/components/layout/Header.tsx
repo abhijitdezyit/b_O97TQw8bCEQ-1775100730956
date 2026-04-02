@@ -19,7 +19,10 @@ export function Header() {
   const pageName = pageNames[location.pathname] || 'GymFlow'
 
   return (
-    <header className="flex h-16 items-center justify-between border-b border-border bg-background px-4 lg:px-6 lg:rounded-tl-2xl sticky top-0 z-30 lg:static">
+    <header 
+      className="flex h-16 items-center justify-between border-b border-border bg-background px-4 lg:px-6 lg:rounded-tl-2xl sticky top-0 z-30 lg:static"
+      style={{ paddingTop: 'max(1rem, env(safe-area-inset-top))' }}
+    >
       {/* Page Title on Mobile / Logo on Desktop */}
       <div className="flex items-center gap-3">
         {/* Logo with Tagline - Desktop only */}

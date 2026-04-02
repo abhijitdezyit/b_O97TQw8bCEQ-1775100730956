@@ -35,8 +35,11 @@ export function AppLayout() {
         {/* Header */}
         <Header />
         
-        {/* Scrollable Content */}
-        <main className="flex-1 overflow-y-auto p-4 pb-20">
+        {/* Scrollable Content with safe bottom padding */}
+        <main 
+          className="flex-1 overflow-y-auto p-4"
+          style={{ paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))' }}
+        >
           <Outlet />
         </main>
         
