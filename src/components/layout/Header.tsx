@@ -20,12 +20,9 @@ export function Header() {
 
   return (
     <header 
-      className="flex items-center justify-between border-b border-border bg-background px-4 lg:px-6 lg:rounded-tl-2xl sticky top-0 z-30 lg:static"
+      className="flex h-16 items-center justify-between border-b border-border bg-background px-4 lg:px-6 lg:rounded-tl-2xl sticky top-0 z-30 lg:static"
       style={{ 
-        paddingTop: 'max(1rem, var(--sat, env(safe-area-inset-top, 0px)))',
-        paddingBottom: '1rem',
-        height: 'auto',
-        minHeight: '4rem'
+        paddingTop: 'var(--sat, env(safe-area-inset-top, 0px))',
       }}
     >
       {/* Page Title on Mobile / Logo on Desktop */}

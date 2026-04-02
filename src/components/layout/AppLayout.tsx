@@ -43,12 +43,11 @@ export function AppLayout() {
         
         {/* Scrollable Content */}
         <main 
-          className="flex-1 overflow-y-auto bg-background"
+          className="flex-1 overflow-y-auto bg-background p-4 pb-20"
           style={{ 
-            paddingTop: '1rem',
-            paddingBottom: 'max(5rem, calc(4rem + var(--sab, env(safe-area-inset-bottom, 0px))))',
-            paddingLeft: 'max(1rem, var(--sal, env(safe-area-inset-left, 0px)))',
-            paddingRight: 'max(1rem, var(--sar, env(safe-area-inset-right, 0px)))'
+            paddingBottom: 'calc(5rem + var(--sab, env(safe-area-inset-bottom, 0px)))',
+            paddingLeft: 'calc(1rem + var(--sal, env(safe-area-inset-left, 0px)))',
+            paddingRight: 'calc(1rem + var(--sar, env(safe-area-inset-right, 0px)))'
           }}
         >
           <Outlet />
