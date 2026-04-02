@@ -13,6 +13,7 @@ import {
   SettingsIcon,
   CalendarCheck,
 } from 'lucide-react'
+import { useSafeArea } from '@/hooks/useSafeArea'
 
 const navItems = [
   { to: '/dashboard', icon: Home, label: 'Home' },
@@ -27,6 +28,8 @@ interface MobileNavProps {
 }
 
 export function MobileNav({ className }: MobileNavProps) {
+  const safeArea = useSafeArea()
+  
   return (
     <nav
       className={cn(
@@ -34,9 +37,9 @@ export function MobileNav({ className }: MobileNavProps) {
         className
       )}
       style={{
-        paddingBottom: 'var(--sab, env(safe-area-inset-bottom, 0px))',
-        paddingLeft: 'var(--sal, env(safe-area-inset-left, 0px))',
-        paddingRight: 'var(--sar, env(safe-area-inset-right, 0px))'
+        paddingBottom: `${safeArea.bottom}px`,
+        paddingLeft: `${safeArea.left}px`,
+        paddingRight: `${safeArea.right}px`
       }}
     >
       <div className="flex items-center justify-around h-16 px-2">

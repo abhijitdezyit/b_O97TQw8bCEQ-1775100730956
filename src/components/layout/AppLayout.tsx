@@ -3,9 +3,11 @@ import { Outlet } from 'react-router-dom'
 import { Sidebar } from './Sidebar'
 import { MobileNav } from './MobileNav'
 import { Header } from './Header'
+import { useSafeArea } from '@/hooks/useSafeArea'
 
 export function AppLayout() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
+  const safeArea = useSafeArea()
 
   return (
     <>
@@ -43,11 +45,11 @@ export function AppLayout() {
         
         {/* Scrollable Content */}
         <main 
-          className="flex-1 overflow-y-auto bg-background p-4 pb-20"
+          className="flex-1 overflow-y-auto bg-background p-4"
           style={{ 
-            paddingBottom: 'calc(5rem + var(--sab, env(safe-area-inset-bottom, 0px)))',
-            paddingLeft: 'calc(1rem + var(--sal, env(safe-area-inset-left, 0px)))',
-            paddingRight: 'calc(1rem + var(--sar, env(safe-area-inset-right, 0px)))'
+            paddingBottom: `${80 + safeArea.bottom}px`,
+            paddingLeft: `${16 + safeArea.left}px`,
+            paddingRight: `${16 + safeArea.right}px`
           }}
         >
           <Outlet />

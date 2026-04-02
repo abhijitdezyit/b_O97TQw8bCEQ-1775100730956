@@ -1,31 +1,9 @@
 import { useEffect, useState } from 'react'
+import { useSafeArea } from '@/hooks/useSafeArea'
 
 export function SafeAreaDebug() {
-  const [safeAreas, setSafeAreas] = useState({
-    top: '0px',
-    right: '0px',
-    bottom: '0px',
-    left: '0px',
-  })
+  const safeAreas = useSafeArea()
   const [show, setShow] = useState(false)
-
-  useEffect(() => {
-    const updateSafeAreas = () => {
-      const root = document.documentElement
-      const style = getComputedStyle(root)
-      
-      setSafeAreas({
-        top: style.getPropertyValue('--sat') || 'not set',
-        right: style.getPropertyValue('--sar') || 'not set',
-        bottom: style.getPropertyValue('--sab') || 'not set',
-        left: style.getPropertyValue('--sal') || 'not set',
-      })
-    }
-
-    updateSafeAreas()
-    window.addEventListener('resize', updateSafeAreas)
-    return () => window.removeEventListener('resize', updateSafeAreas)
-  }, [])
 
   // Toggle with triple tap on screen
   useEffect(() => {
@@ -64,15 +42,18 @@ export function SafeAreaDebug() {
         </button>
       </div>
       <div className="space-y-1">
-        <div>Top: {safeAreas.top}</div>
-        <div>Right: {safeAreas.right}</div>
-        <div>Bottom: {safeAreas.bottom}</div>
-        <div>Left: {safeAreas.left}</div>
+        <div>Top: {safeAreas.top}px</div>
+        <div>Right: {safeAreas.right}px</div>
+        <div>Bottom: {safeAreas.bottom}px</div>
+        <div>Left: {safeAreas.left}px</div>
         <div className="mt-2 pt-2 border-t border-white/20">
           Viewport: {window.innerWidth}x{window.innerHeight}
         </div>
         <div>
           Display: {window.matchMedia('(display-mode: standalone)').matches ? 'PWA' : 'Browser'}
+        </div>
+        <div className="text-yellow-400">
+          {safeAreas.top === 0 && safeAreas.bottom === 0 ? 'Using estimated values' : 'Using CSS env values'}
         </div>
       </div>
       <div className="mt-2 text-white/50 text-[10px]">

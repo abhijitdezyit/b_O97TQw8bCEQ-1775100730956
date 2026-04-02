@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { useLocation } from 'react-router-dom'
+import { useSafeArea } from '@/hooks/useSafeArea'
 
 const pageNames: Record<string, string> = {
   '/dashboard': 'Dashboard',
@@ -17,12 +18,14 @@ const pageNames: Record<string, string> = {
 export function Header() {
   const location = useLocation()
   const pageName = pageNames[location.pathname] || 'GymFlow'
+  const safeArea = useSafeArea()
 
   return (
     <header 
       className="flex h-16 items-center justify-between border-b border-border bg-background px-4 lg:px-6 lg:rounded-tl-2xl sticky top-0 z-30 lg:static"
       style={{ 
-        paddingTop: 'var(--sat, env(safe-area-inset-top, 0px))',
+        paddingTop: `${safeArea.top}px`,
+        minHeight: `${64 + safeArea.top}px`
       }}
     >
       {/* Page Title on Mobile / Logo on Desktop */}
