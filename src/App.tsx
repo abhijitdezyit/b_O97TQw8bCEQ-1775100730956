@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/sonner'
 import { AppLayout } from '@/components/layout/AppLayout'
 import { AuthLayout } from '@/components/layout/AuthLayout'
 import { PWAInstallPrompt } from '@/components/PWAInstallPrompt'
+import { ThemeColorMeta } from '@/components/ThemeColorMeta'
 
 // Lazy load pages for better performance
 const LoginPage = lazy(() => import('@/pages/LoginPage').then(m => ({ default: m.LoginPage })))
@@ -32,6 +33,7 @@ function PageLoader() {
 export default function App() {
   return (
     <ThemeProvider defaultTheme="light" storageKey="gymflow-theme">
+      <ThemeColorMeta />
       <Suspense fallback={<PageLoader />}>
         <Routes>
           <Route element={<AuthLayout />}>

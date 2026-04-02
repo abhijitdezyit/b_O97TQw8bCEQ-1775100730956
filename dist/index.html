@@ -4,15 +4,36 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/icon.svg" />
     <link rel="apple-touch-icon" href="/apple-icon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
     <meta name="description" content="Complete gym and fitness management solution" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="GymFlow" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <style>
+      /* Prevent flash of unstyled content and ensure background extends to safe areas */
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: #ffffff;
+      }
+      @media (prefers-color-scheme: dark) {
+        html, body {
+          background-color: #0f172a;
+        }
+      }
+    </style>
     <title>GymFlow - Fitness Management</title>
-    <script type="module" crossorigin src="/assets/index-Bm8llNrc.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CPobMZqr.css">
+    <script type="module" crossorigin src="/assets/index-BhDvYPMq.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/react-vendor-B1Ad4Cf1.js">
+    <link rel="modulepreload" crossorigin href="/assets/ui-vendor-B8HasCng.js">
+    <link rel="modulepreload" crossorigin href="/assets/chart-vendor-CRzJXcfN.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-D_-ocu-2.css">
   <link rel="manifest" href="/manifest.webmanifest"></head>
   <body>
     <div id="root"></div>

@@ -30,9 +30,14 @@ export function MobileNav({ className }: MobileNavProps) {
   return (
     <nav
       className={cn(
-        'fixed bottom-0 left-0 right-0 z-[100] border-t border-border/40 bg-background backdrop-blur-xl',
+        'fixed bottom-0 left-0 right-0 z-[100] border-t border-border/40 bg-background',
         className
       )}
+      style={{
+        paddingBottom: 'env(safe-area-inset-bottom)',
+        paddingLeft: 'env(safe-area-inset-left)',
+        paddingRight: 'env(safe-area-inset-right)'
+      }}
     >
       <div className="flex items-center justify-around h-16 px-2">
         {navItems.map((item) => (
@@ -60,8 +65,6 @@ export function MobileNav({ className }: MobileNavProps) {
           </NavLink>
         ))}
       </div>
-      {/* Safe area spacer for gesture navigation */}
-      <div style={{ height: 'env(safe-area-inset-bottom)' }} className="bg-background" />
     </nav>
   )
 }

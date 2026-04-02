@@ -10,7 +10,22 @@ next.user-config.*
 # Environment variables
 .env*.local
 
+# Build output
+dist/
+dist-ssr/
+*.local
+
 # Common ignores
 node_modules
 .next/
 .DS_Store
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

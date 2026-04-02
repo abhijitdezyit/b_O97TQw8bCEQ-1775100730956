@@ -31,19 +31,23 @@ export function AppLayout() {
       </div>
 
       {/* Mobile Layout */}
-      <div className="lg:hidden flex flex-col h-screen bg-background">
-        {/* Header */}
+      <div className="lg:hidden flex flex-col bg-background" style={{ height: '100dvh' }}>
+        {/* Header with safe area */}
         <Header />
         
-        {/* Scrollable Content with safe bottom padding */}
+        {/* Scrollable Content */}
         <main 
-          className="flex-1 overflow-y-auto p-4"
-          style={{ paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))' }}
+          className="flex-1 overflow-y-auto p-4 bg-background"
+          style={{ 
+            paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))',
+            paddingLeft: 'calc(1rem + env(safe-area-inset-left))',
+            paddingRight: 'calc(1rem + env(safe-area-inset-right))'
+          }}
         >
           <Outlet />
         </main>
         
-        {/* Mobile Bottom Navigation - Fixed */}
+        {/* Mobile Bottom Navigation - Fixed with safe area */}
         <MobileNav />
       </div>
     </>

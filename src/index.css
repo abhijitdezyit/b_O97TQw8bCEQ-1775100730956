@@ -138,22 +138,32 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground antialiased;
-  }
   
   /* PWA fullscreen support for notches and gesture navigation */
-  html,
-  body {
+  html {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    /* Extend background into safe areas */
+    background-color: var(--background);
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* Ensure body fills entire viewport including safe areas */
+    margin: 0;
+    padding: 0;
   }
   
   #root {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    /* Extend background into safe areas */
+    background-color: var(--background);
   }
 }
 
