@@ -19,6 +19,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { trainers as initialTrainers, type Trainer } from '@/data/mockData'
 import { TrainerModal } from '@/components/trainers/TrainerModal'
+import { MobileAddAction } from '@/components/MobileAddAction'
 import { toast } from 'sonner'
 
 const containerVariants = {
@@ -101,14 +102,6 @@ export function TrainersPage() {
           <p className="text-base text-muted-foreground">Manage your gym trainers</p>
         </div>
         <Button onClick={() => setIsModalOpen(true)} className="w-full sm:w-auto shadow-none h-9 md:h-10">
-          <Plus className="mr-2 h-4 w-4" />
-          Add Trainer
-        </Button>
-      </div>
-
-      {/* Mobile Add Button */}
-      <div className="lg:hidden px-4 md:px-0">
-        <Button onClick={() => setIsModalOpen(true)} className="w-full shadow-none h-9">
           <Plus className="mr-2 h-4 w-4" />
           Add Trainer
         </Button>
@@ -270,6 +263,9 @@ export function TrainersPage() {
         onSubmit={editingTrainer ? handleEditTrainer : handleAddTrainer}
         trainer={editingTrainer}
       />
+      
+      {/* Mobile Add Action - Unique animated button */}
+      <MobileAddAction onClick={() => setIsModalOpen(true)} label="Add Trainer" />
     </motion.div>
   )
 }

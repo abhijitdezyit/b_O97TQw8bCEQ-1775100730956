@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { plans as initialPlans, type Plan } from '@/data/mockData'
 import { PlanModal } from '@/components/plans/PlanModal'
+import { MobileAddAction } from '@/components/MobileAddAction'
 import { toast } from 'sonner'
 
 const containerVariants = {
@@ -68,45 +69,45 @@ export function PlansPage() {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="space-y-6"
+      className="space-y-4 md:space-y-6 pb-4 -mx-4 md:mx-0"
     >
-      {/* Header */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      {/* Header - Desktop only */}
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between px-4 md:px-0 hidden lg:flex">
         <div>
           <h1 className="text-2xl font-bold lg:text-3xl">Membership Plans</h1>
           <p className="text-muted-foreground">Manage your gym membership plans</p>
         </div>
-        <Button onClick={() => setIsModalOpen(true)} className="w-full sm:w-auto">
+        <Button onClick={() => setIsModalOpen(true)} className="w-full sm:w-auto shadow-none">
           <Plus className="mr-2 h-4 w-4" />
           Add Plan
         </Button>
       </div>
 
-      {/* Plans Grid */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Plans Grid - Mobile Responsive */}
+      <div className="grid gap-4 px-4 md:px-0 sm:grid-cols-2 lg:grid-cols-4">
         {plans.map((plan) => (
           <motion.div key={plan.id} variants={itemVariants}>
-            <Card className={`relative rounded-2xl h-full flex flex-col ${
-              plan.popular ? 'border-primary border-2 shadow-lg' : ''
+            <Card className={`relative rounded-xl h-full flex flex-col border-border/40 shadow-none ${
+              plan.popular ? 'border-primary border-2 shadow-lg shadow-primary/10' : ''
             }`}>
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground shadow-md">
                     <Sparkles className="h-3 w-3" />
                     Most Popular
                   </span>
                 </div>
               )}
               
-              <CardHeader className="pb-4">
+              <CardHeader className="pb-3 md:pb-4">
                 <div className="flex items-start justify-between">
                   <div>
-                    <CardTitle className="text-xl">{plan.name}</CardTitle>
-                    <CardDescription>{plan.duration}</CardDescription>
+                    <CardTitle className="text-lg md:text-xl">{plan.name}</CardTitle>
+                    <CardDescription className="text-xs md:text-sm">{plan.duration}</CardDescription>
                   </div>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="icon" className="h-8 w-8">
+                      <Button variant="ghost" size="icon" className="h-8 w-8 -mr-2">
                         <MoreVertical className="h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
@@ -125,29 +126,30 @@ export function PlansPage() {
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
-                <div className="mt-4">
-                  <span className="text-4xl font-bold">${plan.price}</span>
-                  <span className="text-muted-foreground">/{plan.duration.toLowerCase().includes('month') ? 'mo' : 'yr'}</span>
+                <div className="mt-3 md:mt-4">
+                  <span className="text-3xl md:text-4xl font-bold">${plan.price}</span>
+                  <span className="text-sm text-muted-foreground">/{plan.duration.toLowerCase().includes('month') ? 'mo' : 'yr'}</span>
                 </div>
               </CardHeader>
 
-              <CardContent className="flex-1">
-                <ul className="space-y-3">
+              <CardContent className="flex-1 pb-3 md:pb-4">
+                <ul className="space-y-2 md:space-y-3">
                   {plan.benefits.map((benefit, index) => (
                     <li key={index} className="flex items-start gap-2">
-                      <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                      <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 mt-0.5">
                         <Check className="h-3 w-3 text-primary" />
                       </div>
-                      <span className="text-sm text-muted-foreground">{benefit}</span>
+                      <span className="text-xs md:text-sm text-muted-foreground leading-relaxed">{benefit}</span>
                     </li>
                   ))}
                 </ul>
               </CardContent>
 
-              <CardFooter>
+              <CardFooter className="pt-0">
                 <Button 
-                  className="w-full" 
+                  className="w-full shadow-none text-sm" 
                   variant={plan.popular ? 'default' : 'outline'}
+                  size="sm"
                 >
                   Select Plan
                 </Button>
@@ -164,6 +166,9 @@ export function PlansPage() {
         onSubmit={editingPlan ? handleEditPlan : handleAddPlan}
         plan={editingPlan}
       />
+      
+      {/* Mobile Add Action - Floating button */}
+      <MobileAddAction onClick={() => setIsModalOpen(true)} label="Add Plan" />
     </motion.div>
   )
 }

@@ -27,6 +27,7 @@ import {
 } from '@/components/ui/select'
 import { members as initialMembers, type Member } from '@/data/mockData'
 import { MemberModal } from '@/components/members/MemberModal'
+import { MobileAddAction } from '@/components/MobileAddAction'
 import { toast } from 'sonner'
 
 const containerVariants = {
@@ -110,14 +111,6 @@ export function MembersPage() {
           <p className="text-base text-muted-foreground">Manage your gym members</p>
         </div>
         <Button onClick={() => setIsModalOpen(true)} className="w-full sm:w-auto shadow-none h-9 md:h-10">
-          <Plus className="mr-2 h-4 w-4" />
-          Add Member
-        </Button>
-      </div>
-
-      {/* Mobile Add Button */}
-      <div className="lg:hidden px-4 md:px-0">
-        <Button onClick={() => setIsModalOpen(true)} className="w-full shadow-none h-9">
           <Plus className="mr-2 h-4 w-4" />
           Add Member
         </Button>
@@ -353,6 +346,9 @@ export function MembersPage() {
         onSubmit={editingMember ? handleEditMember : handleAddMember}
         member={editingMember}
       />
+      
+      {/* Mobile Add Action - Unique animated button */}
+      <MobileAddAction onClick={() => setIsModalOpen(true)} label="Add Member" />
     </motion.div>
   )
 }
